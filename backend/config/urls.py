@@ -20,6 +20,7 @@ urlpatterns = [
     path('api/', include('equipos.urls')),
     path('api/', include('mantenimientos.urls')),
     path('api/', include('reportes.urls')),
+    path('api/', include('chatbot.urls')),
     path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-ui'),
     path('api/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc'),
 ]

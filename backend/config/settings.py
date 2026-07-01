@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'equipos',
     'mantenimientos',
     'reportes',
+    'chatbot',
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,9 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 50,
+    'DEFAULT_THROTTLE_RATES': {
+        'chat': config('CHAT_THROTTLE_RATE', default='30/minute'),
+    },
 }
 
 # ─── JWT ────────────────────────────────────────────────────────────────────
@@ -128,3 +132,7 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='TecnoCare <no-reply@tecnocare.com>')
+
+# ─── CHATBOT IA (TECNOCARE-IA) ──────────────────────────────────────────────
+GROQ_API_KEY = config('GROQ_API_KEY', default='')
+CHROMA_DIR = config('CHROMA_DIR', default=str(BASE_DIR / 'chroma_db'))
